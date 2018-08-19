@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="概念：事务(Transaction)是访问并可能更新数据库的一个程序执行单元(Unit)，是访问数据库的一个操作序列，DB应用系统通过事务来完成对数据的存取。
+属性：事务必须遵循4个原则，即常说的ACID。
+A 原子性（Atomicity）：一个事物是一个不可分割的工作单位，事务中的操作要么全部被执"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="wulin"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="事务的理解"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="概念：事务(Transaction)是访问并可能更新数据库的一个程序执行单元(Unit)，是访问数据库的一个操作序列，DB应用系统通过事务来完成对数据的存取。
+属性：事务必须遵循4个原则，即常说的ACID。
+A 原子性（Atomicity）：一个事物是一个不可分割的工作单位，事务中的操作要么全部被执"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="wulin&#39;s"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.com/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.com/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>事务的理解 - wulin&#39;s</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/wulinbaba/wulinbaba.github.io">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>事务的理解</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-08-19
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://pimg3.mtime.com/ShowOriginPoster.ashx?guid=0cbb9bd0-47cc-49e5-bf76-76c98f85529f" alt=""></h2><h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><p>事务(Transaction)是访问并可能更新数据库的一个程序执行单元(Unit)，是访问数据库的一个操作序列，DB应用系统通过事务来完成对数据的存取。</p>
+<h3 id="属性："><a href="#属性：" class="headerlink" title="属性："></a>属性：</h3><p>事务必须遵循4个原则，即常说的ACID。</p>
+<p><strong>A 原子性（Atomicity）：</strong>一个事物是一个不可分割的工作单位，事务中的操作要么全部被执行，要么全部不执行。如果事务下的操作全部提交成功，则所有数据库操作被提交，否则，应进行事务回滚。</p>
+<p>现实里好比银行转账一样，当从一个帐户转出一部分钱之后，就必须在另一个帐户中存入相同数目的钱，若是转出钱之后，事务中止了，没有在另一个帐户中存钱，那么钱就不翼而飞了（事务的原子性）。</p>
+<p><strong>C 一致性（Consistency）：</strong> 状态转换必须是由一种一致性的状态转换到另外一种一致性的状态。</p>
+<p>假如有一个产品表和一个产品明细表，是父子关系，当我们添加产品表的时候，一定要添加产品明细表的资料，如果我们只是添加了产品表没有添加产品明细，这样就会是数据不一致。</p>
+<p><strong>I  隔离性（Isolation）：</strong> 一个事务的执行不能被其他事务干扰。即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务直接不能互相干扰。</p>
+<p>若学过多线程的话就能理解多线程为什么要引入锁机制了。而同样为了解决事务的并发问题而引入的事务的隔离级别，数据库和应用程序都可以设置隔离级别。</p>
+<p><strong>D持久性（Durability）：</strong> 指一个事务一旦提交，它对数据库中的数据的改变就应该是永久性的。接下来的其他操作或故障不会对其结果产生影响。</p>
+<p>假设当前事务是去银行存钱，那么我们总不希望你刚刚提交完存钱请求之后（即事务已提交成功），由于突然的故障而让你的金钱“消失”，这就是事务的持久性。</p>
+<h3 id="事务的隔离级别："><a href="#事务的隔离级别：" class="headerlink" title="事务的隔离级别："></a>事务的隔离级别：</h3><p>数据库事务的隔离级别有4种，由低到高分别为Read uncommitted 、Read committed 、Repeatable read 、Serializable 。而且，在事务的并发操作中可能会出现脏读，不可重复读，幻读。 </p>
+<p><strong>1）读未提交（Read Uncommitted ）</strong>顾名思义，就是一个事务可以读取另一个未提交事务的数据。 最低级别，任何情况都无法保证。 </p>
+<p>事例：老板要给员工发工资，程序员的工资是3.6万/月。但是发工资时老板不小心按错了数字，按成3.9万/月，该钱已经打到程序员的账户上，但是事务还没有提交，就在这时，程序员去查看自己这个月的工资，发现比往常多了3千元，以为涨工资了非常高兴。但是老板及时发现了不对，马上回滚差点就提交了的事务，将数字改成3.6万再提交。</p>
+<p>分析：实际程序员这个月的工资还是3.6万，但是程序员看到的是3.9万。他看到的是老板还没提交事务时的数据。这就是脏读。怎么解决脏读呢？Read committed 读提交，能解决脏读问题。 </p>
+<p><strong>2）读已提交（Read Committed ）</strong>顾名思义，就是一个事务要等另一个事务提交后才能读取数据。 可避免脏读的发生。 </p>
+<p>事例：程序员拿着信用卡去享受生活（卡里当然是只有3.6万），当他埋单时（程序员事务开启），收费系统事先检测到他的卡里有3.6万，而在这个时候，程序员的妻子要把钱全部转出充当家用，并提交。当收费系统准备扣款时，再检测卡里的金额，发现已经没钱了（第二次检测金额当然要等待妻子转出金额事务提交完）。程序员就会很郁闷，明明卡里是有钱的。</p>
+<p>分析：这就是读提交，若有事务对数据进行更新（UPDATE）操作时，读操作事务要等待这个更新操作事务提交后才能读取数据，可以解决脏读问题。但在这个事例中，出现了一个事务范围内两个相同的查询却返回了不同数据，这就是不可重复读。怎么解决可能的不可重复读问题？Repeatable read 。</p>
+<p><strong>3）可重复读（Repeatable Read）</strong>就是在开始读取数据（事务开启）时，不再允许修改操作 。可避免脏读、不可重复读的发生。 </p>
+<p>事例：程序员拿着信用卡去享受生活（卡里当然是只有3.6万），当他埋单时（事务开启，不允许其他事务的UPDATE修改操作），收费系统事先检测到他的卡里有3.6万。这个时候他的妻子不能转出金额了。接下来收费系统就可以扣款了。</p>
+<p>分析：重复读可以解决不可重复读问题。写到这里，应该明白的一点就是，不可重复读对应的是修改，即UPDATE操作。但是可能还会有幻读问题。因为幻读问题对应的是插入INSERT操作，而不是UPDATE操作。</p>
+<p>DATE操作。</p>
+<hr>
+<p><strong>什么时候会出现幻读？</strong></p>
+<p>事例：程序员某一天去消费，花了2千元，然后他的妻子去查看他今天的消费记录（全表扫描FTS，妻子事务开启），看到确实是花了2千元，就在这个时候，程序员花了1万买了一部电脑，即新增INSERT了一条消费记录，并提交。当妻子打印程序员的消费记录清单时（妻子事务提交），发现花了1.2万元，似乎出现了幻觉，这就是幻读。那怎么解决幻读问题—Serializable。</p>
+<hr>
+<p><strong>4）串行化（Serializable）</strong>一个事务在执行过程中完全看不到其他事务对数据库所做的更新。可避免脏读、不可重复读、幻读的发生。 </p>
+<p>MySQL中事务隔离级别为serializable时会锁表，因此不会出现幻读的情况，这种隔离级别并发性极低，开发中很少会用到。</p>
+<p>值得一提的是：大多数数据库默认的事务隔离级别是Read committed，比如SQL Server , Oracle。而MySQL的默认隔离级别是Repeatable read。 </p>
+<h3 id="提到的问题："><a href="#提到的问题：" class="headerlink" title="提到的问题："></a>提到的问题：</h3><p><strong>1）脏读：</strong>脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据。 </p>
+<p><strong>2）不可重复读：</strong>不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。指一个线程中的事务读取到了另外一个线程中提交的update的数据。 </p>
+<p><strong>3）幻读：</strong>幻读是事务非独立执行时发生的一种现象，指一个线程中的事务读取到了另外一个线程中提交的insert的数据。 </p>
+<h5 id="不可重复读侧重于修改，幻读侧重于新增或删除。解决不可重复读的问题只需锁住满足条件的行，解决幻读需要锁表。"><a href="#不可重复读侧重于修改，幻读侧重于新增或删除。解决不可重复读的问题只需锁住满足条件的行，解决幻读需要锁表。" class="headerlink" title="不可重复读侧重于修改，幻读侧重于新增或删除。解决不可重复读的问题只需锁住满足条件的行，解决幻读需要锁表。"></a><em>不可重复读侧重于修改，幻读侧重于新增或删除。解决不可重复读的问题只需锁住满足条件的行，解决幻读需要锁表</em>。</h5><h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><p>1、SQL规范所规定的标准，不同的数据库具体的实现可能会有些差异。</p>
+<p>2、MySQL中默认事务隔离级别是可重复读时并不会锁住读取到的行。</p>
+<p>3、事务隔离级别为读提交时，写数据只会锁住相应的行。</p>
+<p>4、事务隔离级别为可重复读时，如果有索引（包括主键索引）的时候，以索引列为条件更新数据，会存在间隙锁间隙锁、行锁、下一键锁的问题，从而锁住一些行；如果没有索引，更新数据时会锁住整张表。</p>
+<p>5、事务隔离级别为串行化时，读写数据都会锁住整张表。</p>
+<p>6、隔离级别越高，越能保证数据的完整性和一致性，但是对并发性能的影响也越大，鱼和熊掌不可兼得啊。对于多数应用程序，可以优先考虑把数据库系统的隔离级别设为Read   Committed，它能够避免脏读取，而且具有较好的并发性能。尽管它会导致不可重复读、幻读这些并发问题，在可能出现这类问题的个别场合，可以由应用程序采用悲观锁或乐观锁来控制。</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/wulinbaba" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 wulin<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
