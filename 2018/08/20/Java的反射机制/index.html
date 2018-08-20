@@ -200,6 +200,7 @@
                 <h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p>在运行状态中，对于任意一个类都能知道它的属性和方法，对于任意一个对象都能调用它的属性和方法，这样的动态获取和调用属性和方法的功能就叫做反射。</p>
 <p>正常方式：通过完整的类名 &gt; 通过new实例化 &gt; 取得实例化对象</p>
 <p>反射方式：实例化对象 &gt; getClass()方法 &gt; 通过完整的类名</p>
+<p>​            </p>
 <h2 id="获取Class对象的方法"><a href="#获取Class对象的方法" class="headerlink" title="获取Class对象的方法"></a>获取Class对象的方法</h2><ol>
 <li><p>调用对象的getClass()方法</p>
 </li>
@@ -209,8 +210,10 @@
 </li>
 </ol>
 <p>注：三种获取方式得到的Class对象是一样的，因为在运行期间，一个类只有一个Class对象。</p>
+<p>​                </p>
 <h2 id="反射机制的作用"><a href="#反射机制的作用" class="headerlink" title="反射机制的作用"></a>反射机制的作用</h2><p>优点：增强程序的灵活性，避免将程序写死在代码里面</p>
 <p>缺点：反射会导致性能降低，复杂度增加</p>
+<p>​                     </p>
 <h2 id="Java反射机制在Spring-IOC中的应用"><a href="#Java反射机制在Spring-IOC中的应用" class="headerlink" title="Java反射机制在Spring IOC中的应用"></a>Java反射机制在Spring IOC中的应用</h2><p>IOC：即“控制反转”，不是什么技术，而是一种思想。使用IOC意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。</p>
 <p>在Spring的配置文件中，经常看到如下配置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;courseDao&quot; class=&quot;com.qcjy.learning.Dao.impl.CourseDaoImpl&quot;&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
