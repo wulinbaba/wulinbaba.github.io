@@ -197,19 +197,19 @@ spring在服务器启动时就将所有的 singleton 的 bean 提前实"/>
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h1 id="Java中的bean何时被实例化"><a href="#Java中的bean何时被实例化" class="headerlink" title="Java中的bean何时被实例化"></a>Java中的bean何时被实例化</h1><p>spring中bean默认是sinleton的，延迟加载为false 。即   如果想要一个类延迟实例化，那么将其的lazy-init=”true”或改变其 scope（类的管理方式）。 </p>
 <p><strong>spring在服务器启动时就将所有的 singleton 的 bean 提前实例化</strong>，这个应该是在web.xml中配置的 ContextLoaderListener做的。 </p>
-<p><img src="https://img-blog.csdn.net/20161018164030423.png" alt=""> </p>
+<p><img src="https://raw.githubusercontent.com/wulinbaba/wulinbaba.github.io/master/img/bean%E4%BD%95%E6%97%B6%E5%AE%9E%E4%BE%8B%E5%8C%96/1.png" alt=""> </p>
 <p>在ssh框架下，新建了3个类，UserDaoImpl，UserServiceImpl，UserAction，他们的空参构造方法中都写了一句话表示本类被初始化了。   测试如下，启动服务器，三句话都被打印出来了，说明这三个bean在服务器启动的时候都被初始化了。</p>
-<p><img src="C:\Users\wulin\Desktop\复习\Spring\bean何时实例化\2.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/wulinbaba/wulinbaba.github.io/master/img/bean%E4%BD%95%E6%97%B6%E5%AE%9E%E4%BE%8B%E5%8C%96/2.png" alt=""></p>
 <p>如果使用单例singleton来管理action的话，如下图，两次调用的是同一个UserAction实例的save()方法 </p>
-<p><img src="C:\Users\wulin\Desktop\复习\Spring\bean何时实例化\3.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/wulinbaba/wulinbaba.github.io/master/img/bean%E4%BD%95%E6%97%B6%E5%AE%9E%E4%BE%8B%E5%8C%96/3.png" alt=""></p>
 <p>但是因为struts2的action是不是单例的，线程安全的，效率比较低。<br>修改UserAction的scop为prototype原型，启动服务器，发现UserAction是没有被初始化的。</p>
-<p><img src="C:\Users\wulin\Desktop\复习\Spring\bean何时实例化\4.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/wulinbaba/wulinbaba.github.io/master/img/bean%E4%BD%95%E6%97%B6%E5%AE%9E%E4%BE%8B%E5%8C%96/4.png" alt=""></p>
 <p>再次两次访问save方法。发现使用了prototype之后，生成两个UserAction实例 </p>
-<p><img src="C:\Users\wulin\Desktop\复习\Spring\bean何时实例化\5.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/wulinbaba/wulinbaba.github.io/master/img/bean%E4%BD%95%E6%97%B6%E5%AE%9E%E4%BE%8B%E5%8C%96/5.png" alt=""></p>
 <p>继续修改代码，将UserService的lazy-init设置为ture。如下图，可以发现，现在只有UserDaoImpl被初始化了</p>
-<p><img src="C:\Users\wulin\Desktop\复习\Spring\bean何时实例化\6.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/wulinbaba/wulinbaba.github.io/master/img/bean%E4%BD%95%E6%97%B6%E5%AE%9E%E4%BE%8B%E5%8C%96/6.png" alt=""></p>
 <p>修改了一下UserAction，在其中调用了UserService的save方法。此时访问save()方法，可以发现UserServiceImpl被初始化了。<br>spring文档：需要说明的是，如果一个bean被设置为延迟初始化，而另一个非延迟初始化的singleton bean依赖于它，那么当ApplicationContext提前实例化singleton bean时，它必须也确保所有上述singleton 依赖bean也被预先初始化，当然也包括设置为延迟实例化的bean。因此，如果Ioc容器在启动的时候创建了那些设置为延迟实例化的bean的实例，你也不要觉得奇怪，因为那些延迟初始化的bean可能在配置的某个地方被注入到了一个非延迟初始化singleton bean里面。</p>
-<p><img src="C:\Users\wulin\Desktop\复习\Spring\bean何时实例化\7.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/wulinbaba/wulinbaba.github.io/master/img/bean%E4%BD%95%E6%97%B6%E5%AE%9E%E4%BE%8B%E5%8C%96/7.png" alt=""></p>
 <h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>1）spring管理的bean在默认情况下是会在服务器启动的时候初始化的。<br>2）bean设置了scope为prototype（原型）之后，会每次使用时生产一个。<br>3）bean设置了lazy-init=”true”后，启动服务器不会马上实例化，而是在用到的时候被实例化。</p>
 
 
