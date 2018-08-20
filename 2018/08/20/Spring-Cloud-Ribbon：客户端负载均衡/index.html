@@ -227,10 +227,10 @@
 <p>​                    </p>
 <p>以上就是Spring Cloud Ribbon中实现客户端负载均衡的基本脉络，了解了它是如何通过LoadBalancerInterceptor拦截器对RestTemplate的请求进行拦截，并利用Spring Cloud的负载均衡器LoadBalancerClient将以逻辑服务名为host的URL转换成具体的服务实例地址的过程。</p>
 <p>同时通过分析LoadBalancerClient的Ribbon实现RibbonLoadBalancerClient，可以知道在使用Ribbon实现负载均衡器的时候，实际使用的还是Ribbon中定义的ILoadBalancer接口的实现，自动化配置会采用ZoneAwareLoadBalancer的实例来实现客户端的负载均衡。</p>
-<p>​                        </p>
+<p>​                                </p>
 <p>Ribbon默认的策略是轮询，可以自定义负载策略来覆盖默认的，当然也可以通过配置指定使用哪些策略。</p>
 <p><img src="https://raw.githubusercontent.com/wulinbaba/wulinbaba.github.io/master/img/SpringCloudRibbon/8.png" alt=""></p>
-<p>​                                    </p>
+<p>​                          </p>
 <p>放一张手画的图，可能整个流程看起来会清晰一点。</p>
 <p><img src="https://raw.githubusercontent.com/wulinbaba/wulinbaba.github.io/master/img/SpringCloudRibbon/7.jpg" alt=""></p>
 
