@@ -231,7 +231,6 @@
 <thead>
 <tr>
 <th>策略名</th>
-<th>策略声明</th>
 <th>策略描述</th>
 <th>实现说明</th>
 </tr>
@@ -239,49 +238,42 @@
 <tbody>
 <tr>
 <td>BestAvailableRule</td>
-<td>public class BestAvailableRule extends   ClientConfigEnabledRoundRobinRule</td>
 <td>选择一个最小的并发请求的server</td>
 <td>逐个考察Server，如果Server被tripped了，则忽略，在选择其中ActiveRequestsCount最小的server</td>
 </tr>
 <tr>
 <td>AvailabilityFilteringRule</td>
-<td>public class AvailabilityFilteringRule extends   PredicateBasedRule</td>
 <td>过滤掉那些因为一直连接失败的被标记为circuit   tripped的后端server，并过滤掉那些高并发的的后端server（active connections 超过配置的阈值）</td>
 <td>使用一个AvailabilityPredicate来包含过滤server的逻辑，其实就就是检查status里记录的各个server的运行状态</td>
 </tr>
 <tr>
 <td>WeightedResponseTimeRule</td>
-<td>public class WeightedResponseTimeRule extends   RoundRobinRule</td>
 <td>根据响应时间分配一个weight，响应时间越长，weight越小，被选中的可能性越低。</td>
 <td>一个后台线程定期的从status里面读取评价响应时间，为每个server计算一个weight。Weight的计算也比较简单responsetime 减去每个server自己平均的responsetime是server的权重。当刚开始运行，没有形成status时，使用roubine策略选择server。</td>
 </tr>
 <tr>
 <td>RetryRule</td>
-<td>public class RetryRule extends AbstractLoadBalancerRule</td>
 <td>对选定的负载均衡策略机上重试机制。</td>
 <td>在一个配置时间段内当选择server不成功，则一直尝试使用subRule的方式选择一个可用的server</td>
 </tr>
 <tr>
 <td>RoundRobinRule</td>
-<td>public class RoundRobinRule extends   AbstractLoadBalancerRule</td>
 <td>roundRobin方式轮询选择server</td>
 <td>轮询index，选择index对应位置的server</td>
 </tr>
 <tr>
 <td>RandomRule</td>
-<td>public class RandomRule extends AbstractLoadBalancerRule</td>
 <td>随机选择一个server</td>
 <td>在index上随机，选择index对应位置的server</td>
 </tr>
 <tr>
 <td>ZoneAvoidanceRule</td>
-<td>public class ZoneAvoidanceRule extends   PredicateBasedRule</td>
 <td>复合判断server所在区域的性能和server的可用性选择server</td>
 <td>使用ZoneAvoidancePredicate和AvailabilityPredicate来判断是否选择某个server，前一个判断判定一个zone的运行性能是否可用，剔除不可用的zone（的所有server），AvailabilityPredicate用于过滤掉连接数过多的Server。</td>
 </tr>
 </tbody>
 </table>
-<p>​                 </p>
+<p>​                                    </p>
 <p>放一张手画的图，可能整个流程看起来会清晰一点。</p>
 <p><img src="https://raw.githubusercontent.com/wulinbaba/wulinbaba.github.io/master/img/SpringCloudRibbon/7.jpg" alt=""></p>
 
