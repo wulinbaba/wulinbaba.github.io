@@ -197,7 +197,7 @@ spring在服务器启动时就将所有的 singleton 的 bean 提前实"/>
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h1 id="Java中的bean何时被实例化"><a href="#Java中的bean何时被实例化" class="headerlink" title="Java中的bean何时被实例化"></a>Java中的bean何时被实例化</h1><p>spring中bean默认是sinleton的，延迟加载为false 。即   如果想要一个类延迟实例化，那么将其的lazy-init=”true”或改变其 scope（类的管理方式）。 </p>
 <p><strong>spring在服务器启动时就将所有的 singleton 的 bean 提前实例化</strong>，这个应该是在web.xml中配置的 ContextLoaderListener做的。 </p>
-<p><img src="C:\Users\wulin\Desktop\复习\Spring\bean何时实例化\1.png" alt=""></p>
+<p><img src="https://img-blog.csdn.net/20161018164030423.png" alt=""> </p>
 <p>在ssh框架下，新建了3个类，UserDaoImpl，UserServiceImpl，UserAction，他们的空参构造方法中都写了一句话表示本类被初始化了。   测试如下，启动服务器，三句话都被打印出来了，说明这三个bean在服务器启动的时候都被初始化了。</p>
 <p><img src="C:\Users\wulin\Desktop\复习\Spring\bean何时实例化\2.png" alt=""></p>
 <p>如果使用单例singleton来管理action的话，如下图，两次调用的是同一个UserAction实例的save()方法 </p>
