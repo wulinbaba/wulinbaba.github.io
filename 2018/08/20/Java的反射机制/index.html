@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="反射在运行状态中，对于任意一个类都能知道它的属性和方法，对于任意一个对象都能调用它的属性和方法，这样的动态获取和调用属性和方法的功能就叫做反射。
+正常方式：通过完整的类名 &amp;gt; 通过new实例化 &amp;gt; 取得实例化对象
+反射方式：实例化对象 &amp;gt; getClass()方法 &amp;gt; 通过完"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="wulin"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Java的反射机制"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="反射在运行状态中，对于任意一个类都能知道它的属性和方法，对于任意一个对象都能调用它的属性和方法，这样的动态获取和调用属性和方法的功能就叫做反射。
+正常方式：通过完整的类名 &amp;gt; 通过new实例化 &amp;gt; 取得实例化对象
+反射方式：实例化对象 &amp;gt; getClass()方法 &amp;gt; 通过完"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="wulin&#39;s"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.com/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.com/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Java的反射机制 - wulin&#39;s</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/wulinbaba/wulinbaba.github.io">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Java的反射机制</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-08-20
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p>在运行状态中，对于任意一个类都能知道它的属性和方法，对于任意一个对象都能调用它的属性和方法，这样的动态获取和调用属性和方法的功能就叫做反射。</p>
+<p>正常方式：通过完整的类名 &gt; 通过new实例化 &gt; 取得实例化对象</p>
+<p>反射方式：实例化对象 &gt; getClass()方法 &gt; 通过完整的类名</p>
+<h2 id="获取Class对象的方法"><a href="#获取Class对象的方法" class="headerlink" title="获取Class对象的方法"></a>获取Class对象的方法</h2><ol>
+<li><p>调用对象的getClass()方法</p>
+</li>
+<li><p>通过调用对象的class属性，每一个数据类型都有一个静态的静态属性class</p>
+</li>
+<li><p>Class类的静态方法forName(“真实路径:包名.类名”)</p>
+</li>
+</ol>
+<p>注：三种获取方式得到的Class对象是一样的，因为在运行期间，一个类只有一个Class对象。</p>
+<h2 id="反射机制的作用"><a href="#反射机制的作用" class="headerlink" title="反射机制的作用"></a>反射机制的作用</h2><p>优点：增强程序的灵活性，避免将程序写死在代码里面</p>
+<p>缺点：反射会导致性能降低，复杂度增加</p>
+<h2 id="Java反射机制在Spring-IOC中的应用"><a href="#Java反射机制在Spring-IOC中的应用" class="headerlink" title="Java反射机制在Spring IOC中的应用"></a>Java反射机制在Spring IOC中的应用</h2><p>IOC：即“控制反转”，不是什么技术，而是一种思想。使用IOC意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。</p>
+<p>在Spring的配置文件中，经常看到如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;courseDao&quot; class=&quot;com.qcjy.learning.Dao.impl.CourseDaoImpl&quot;&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<p> 通过配置，Spring是通过反射帮我们实例化对象，并放到容器中。</p>
+<p>下面是Spring通过配置进行实例化对象，并放到容器中的伪代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//解析&lt;bean .../&gt;元素的id属性得到该字符串值为“courseDao”</span><br><span class="line">String idStr = &quot;courseDao&quot;;</span><br><span class="line"></span><br><span class="line">//解析&lt;bean .../&gt;元素的class属性得到该字符串值为“com.qcjy.learning.Dao.impl.CourseDaoImpl”</span><br><span class="line">String classStr = &quot;com.qcjy.learning.Dao.impl.CourseDaoImpl&quot;;</span><br><span class="line"></span><br><span class="line">//利用反射知识，通过classStr获取Class类对象</span><br><span class="line">Class&lt;?&gt; cls = Class.forName(classStr);</span><br><span class="line"></span><br><span class="line">//实例化对象</span><br><span class="line">Object obj = cls.newInstance();</span><br><span class="line"></span><br><span class="line">//container表示Spring容器</span><br><span class="line">container.put(idStr, obj);</span><br></pre></td></tr></table></figure>
+<p>通过解析xml文件，获取到id属性和class属性里面的内容，利用反射原理获取到配置里面类的实例对象，存入到Spring的bean容器中。</p>
+<p>当一个类里面需要应用另一类的对象时，Spring的配置如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;courseService&quot; class=&quot;com.qcjy.learning.service.impl.CourseServiceImpl&quot;&gt;</span><br><span class="line">     &lt;!-- 控制调用setCourseDao()方法，将容器中的courseDao bean作为传入参数 --&gt;</span><br><span class="line">     &lt;property name=&quot;courseDao&quot; ref=&quot;courseDao&quot;&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<p>继续用伪代码的形式来模拟实现一下Spring底层处理原理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//解析&lt;property .../&gt;元素的name属性得到该字符串值为“courseDao”</span><br><span class="line">String nameStr = &quot;courseDao&quot;;</span><br><span class="line"></span><br><span class="line">//解析&lt;property .../&gt;元素的ref属性得到该字符串值为“courseDao”</span><br><span class="line">String refStr = &quot;courseDao&quot;;</span><br><span class="line"></span><br><span class="line">//生成将要调用setter方法名</span><br><span class="line">String setterName = &quot;set&quot; + nameStr.substring(0, 1).toUpperCase() + nameStr.substring(1);</span><br><span class="line"></span><br><span class="line">//获取spring容器中名为refStr的Bean，该Bean将会作为传入参数</span><br><span class="line">Object paramBean = container.get(refStr);</span><br><span class="line"></span><br><span class="line">//获取setter方法的Method类，此处的cls是刚才反射代码得到的Class对象</span><br><span class="line">Method setter = cls.getMethod(setterName, paramBean.getClass());</span><br><span class="line"></span><br><span class="line">//调用invoke()方法，此处的obj是刚才反射代码得到的Object对象</span><br><span class="line">setter.invoke(obj, paramBean);</span><br></pre></td></tr></table></figure>
+<p>通过上面对Spring底层原理的分析，可以发现用到的都是反射机制，通过反射实例化对象，存入到Spring的bean容器中。</p>
+<p>注：只要在代码或配置文件中看到类的完整路径（包.类），其底层原理基本上使用的就是Java的反射机制。</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/wulinbaba" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 wulin<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
