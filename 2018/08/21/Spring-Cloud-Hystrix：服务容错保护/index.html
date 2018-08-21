@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="Spring Cloud Hystrix在微服务架构中，我们将系统拆分为很多个服务，各个服务之间通过注册与订阅的方式相互依赖，由于各个服务都是在各自的进程中运行，就有可能由于网络原因或者服务自身的问题导致调用故障或延迟，随着服务的积压，可能会导致服务崩溃。
+为了解决这一系列的问题，断路器等一系列服务"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="wulin"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Spring Cloud Hystrix：服务容错保护"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Spring Cloud Hystrix在微服务架构中，我们将系统拆分为很多个服务，各个服务之间通过注册与订阅的方式相互依赖，由于各个服务都是在各自的进程中运行，就有可能由于网络原因或者服务自身的问题导致调用故障或延迟，随着服务的积压，可能会导致服务崩溃。
+为了解决这一系列的问题，断路器等一系列服务"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="wulin&#39;s"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.com/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.com/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Spring Cloud Hystrix：服务容错保护 - wulin&#39;s</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/wulinbaba/wulinbaba.github.io">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Spring Cloud Hystrix：服务容错保护</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-08-21
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Spring-Cloud-Hystrix"><a href="#Spring-Cloud-Hystrix" class="headerlink" title="Spring Cloud Hystrix"></a>Spring Cloud Hystrix</h1><p>在微服务架构中，我们将系统拆分为很多个服务，各个服务之间通过注册与订阅的方式相互依赖，由于各个服务都是在各自的进程中运行，就有可能由于网络原因或者服务自身的问题导致调用故障或延迟，随着服务的积压，可能会导致服务崩溃。</p>
+<p>为了解决这一系列的问题，断路器等一系列服务保护机制出现了。</p>
+<p>针对上述问题，Spring Cloud Hystrix 实现了断路器、线路隔离等一系列服务保护功能。它也是基于 Netflix 的开源框架 Hystrix 实现的，该框架的目标在于通过控制那些访问远程系统、服务和第三方库的节点，从而对延迟和故障提供更强大的容错能力。<br>Hystrix具备服务降级、服务熔断、线程和信号隔离、请求缓存、请求合并以及服务监控等强大功能。</p>
+<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><p>首先pom文件中添加依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-hystrix&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>在消费者主类上添加@EnableCircuitBreaker或@EnableHystrix注解开启Hystrix的使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@EnableCircuitBreaker</span><br><span class="line">@EnableDiscoveryClient</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class RibbonConsumerApplication &#123;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    @LoadBalanced</span><br><span class="line">    RestTemplate restTemplate()&#123;</span><br><span class="line">        return new RestTemplate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        SpringApplication.run(RibbonConsumerApplication.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在ArticleController添加方法，并添加@HystrixCommand定义服务降级，这里的fallbackMethod服务调用失败后调用的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public class HelloService &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    @HystrixCommand(fallbackMethod = &quot;helloFallback&quot;,commandKey = &quot;helloKey&quot;)</span><br><span class="line">    public String helloService()&#123;</span><br><span class="line">        return restTemplate.getForEntity(&quot;http://HELLO-SERVICE/hello&quot;,String.class).getBody();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String helloFallback()&#123;</span><br><span class="line">        return &quot;error&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重启服务，如果没有出现故障，仍然可以正常访问并返回正确的数据。下面在服务接口中添加sleep来模拟网络延迟：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class HelloController &#123;</span><br><span class="line"></span><br><span class="line">    private static Logger logger =LogManager.getLogger(HelloController.class);</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private DiscoveryClient client;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/hello&quot;,method = RequestMethod.GET)</span><br><span class="line">    public String hello() throws Exception&#123;</span><br><span class="line"></span><br><span class="line">        int sleepTime = new Random().nextInt(3000);</span><br><span class="line">        logger.info(&quot;sleepTime&quot;+sleepTime);</span><br><span class="line">        System.out.println(&quot;sleepTime&quot;+sleepTime);</span><br><span class="line">        Thread.sleep(sleepTime);</span><br><span class="line"></span><br><span class="line">        return &quot;Hello World2&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重新启动服务后刷新页面，重新发起请求，由于Hystrix默认超时时间为1000毫秒，可以发现当sleepTime大于1000时就会返回error，即服务消费者因调用的服务超时从而触发熔断请求，并调用回调逻辑返回结果。<br><img src="/2018/08/21/Spring-Cloud-Hystrix：服务容错保护/1.png" alt=""></p>
+<p>通过上面的使用，发现一个问题：使用这种方法配置服务降级的方式，回调函数的入参和返回值必须与接口函数的一直，不然会抛出异常。</p>
+<h2 id="自定义Hystrix命令"><a href="#自定义Hystrix命令" class="headerlink" title="自定义Hystrix命令"></a>自定义Hystrix命令</h2><p>上面使用注解方式配置非常简单。在Hystrix中我们也可以通过继承HystrixCommand来实现自定义的HystrixCommand，而且还支持同步请求和异步请求两种方式。</p>
+<p>创建UserCommand并继承HystrixCommand，实现run方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class UserCommand extends HystrixCommand&lt;User&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private final Logger logger =  LoggerFactory.getLogger(UserCommand.class);</span><br><span class="line">    private RestTemplate restTemplate;</span><br><span class="line">    private Long id;</span><br><span class="line"></span><br><span class="line">    public UserCommand(Setter setter,RestTemplate restTemplate,Long id)&#123;</span><br><span class="line">        super(setter);</span><br><span class="line">        this.restTemplate = restTemplate;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected User run() throws Exception &#123;</span><br><span class="line">        logger.info(&quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;自定义HystrixCommand请求&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);</span><br><span class="line">        return restTemplate.getForObject(&quot;http://USER-SERVICE/user/&#123;1&#125;&quot;,User.class,id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后添加一个接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/command/&#123;id&#125;&quot;)</span><br><span class="line">public User findUserCommand(@PathVariable(&quot;id&quot;) Long id) throws ExecutionException, InterruptedException &#123;</span><br><span class="line">    com.netflix.hystrix.HystrixCommand.Setter setter = com.netflix.hystrix.HystrixCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey(&quot;&quot;));</span><br><span class="line">    UserCommand userCommand = new UserCommand(setter,restTemplate,id);</span><br><span class="line">    //同步调用</span><br><span class="line">    //User user = userCommand.execute();</span><br><span class="line">    //异步请求</span><br><span class="line">    Future&lt;User&gt; queue = userCommand.queue();</span><br><span class="line">    User user = queue.get();</span><br><span class="line">    return user;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查看@HystrixCommand注解源码，可以看到这里也有groupKey、commandKey等参数，这也就是说使用@HystrixCommand注解时是可以配置命令名称、命令分组和线程池划分等参数的。 </p>
+<h2 id="注解实现异步请求"><a href="#注解实现异步请求" class="headerlink" title="注解实现异步请求"></a>注解实现异步请求</h2><p>上面自定义命令中可以实现异步，同样也可以直接使用注解来实现异步请求；<br>配置HystrixCommandAspect的Bean</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">public HystrixCommandAspect hystrixCommandAspect()&#123;</span><br><span class="line">    return new HystrixCommandAspect();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后使用AsyncResult来执行调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@HystrixCommand</span><br><span class="line">@GetMapping(&quot;/async/&#123;id&#125;&quot;)</span><br><span class="line">public Future&lt;User&gt; findUserAsync(@PathVariable(&quot;id&quot;) Long id)&#123;</span><br><span class="line">    return new AsyncResult&lt;User&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public User invoke() &#123;</span><br><span class="line">            return restTemplate.getForObject(&quot;http://USER-SERVICE/user/&#123;1&#125;&quot;,User.class,id);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><h3 id="异常传播"><a href="#异常传播" class="headerlink" title="异常传播"></a>异常传播</h3><p>查看@HystrixCommand注解源码可以发现里面有个ignoreExceptions参数。该参数是定义忽略指定的异常功能。如下代码，当方法抛出NullPointerException时会将异常抛出，而不触发降级服务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@HystrixCommand(fallbackMethod = &quot;fallback&quot;,ignoreExceptions = &#123;NullPointerException.class&#125;)</span><br><span class="line">  @GetMapping(&quot;/hystrix/&#123;id&#125;&quot;)</span><br><span class="line">  public User findUserHystrix(@PathVariable(&quot;id&quot;) Long id)&#123;</span><br><span class="line">      return restTemplate.getForObject(&quot;http://USER-SERVICE/user/&#123;1&#125;&quot;,User.class,id);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="异常获取"><a href="#异常获取" class="headerlink" title="异常获取"></a>异常获取</h3><p>1.传统的继承方式，在继承了HystrixCommand类中重写getFallback()方法，这里在run方法中添加弄出一个异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected User getFallback() &#123;</span><br><span class="line">    Throwable e = getExecutionException();</span><br><span class="line">    logger.info(&quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#123;&#125;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&quot;,e.getMessage());</span><br><span class="line">    return new User(-1L,&quot;&quot;,-1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected User run() throws Exception &#123;</span><br><span class="line">    logger.info(&quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;自定义HystrixCommand请求&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);</span><br><span class="line">    int i = 1/0;</span><br><span class="line">    return restTemplate.getForObject(&quot;http://USER-SERVICE/user/&#123;1&#125;&quot;,User.class,id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.使用注解，在自定义的服务降级方法中可以使用Throwable 获取异常信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@HystrixCommand(fallbackMethod = &quot;fallback&quot;)</span><br><span class="line">@GetMapping(&quot;/hystrix/&#123;id&#125;&quot;)</span><br><span class="line">public User findUserHystrix(@PathVariable(&quot;id&quot;) Long id)&#123;</span><br><span class="line">    int i = 1/0;</span><br><span class="line">    return restTemplate.getForObject(&quot;http://USER-SERVICE/user/&#123;1&#125;&quot;,User.class,id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private User fallback(Long id,Throwable throwable)&#123;</span><br><span class="line">    LoggerFactory.getLogger(ArticleController.class).info(&quot;========&#123;&#125;=============&quot;,throwable.getMessage());</span><br><span class="line">    return new User();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="请求缓存"><a href="#请求缓存" class="headerlink" title="请求缓存"></a>请求缓存</h2><p>在高并发的场景下，Hystrix中提供了请求缓存的功能，可以方便的开启和使用请求缓存来优化系统，达到减轻高并发时的请求线程消耗、降低请求相应时间。</p>
+<h3 id="继承方式"><a href="#继承方式" class="headerlink" title="继承方式"></a>继承方式</h3><p>在继承了HystrixCommand类中重写getCacheKey()方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected String getCacheKey() &#123;</span><br><span class="line">    return String.valueOf(id);</span><br><span class="line">&#125;</span><br><span class="line">public UserCommand(RestTemplate restTemplate,Long id)&#123;</span><br><span class="line">    super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey(&quot;userGroup&quot;)));</span><br><span class="line">    this.restTemplate = restTemplate;</span><br><span class="line">    this.id = id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过getCacheKey()方法返回请求的Key值，Hystrix会根据getCacheKey返回的值来区分是否是重复请求，如果cacheKey相同，那么该依赖服务只会在第一个请求达到时被真实的调用，另一个请求则是直接从请求缓存中返回结果。<br><img src="/2018/08/21/Spring-Cloud-Hystrix：服务容错保护/2.png" alt=""><br>修改后的接口类，该方法第一句为初始化HystrixRequestContext，如果不初始化该对象会报错。这里是在测试环境，如果在真正项目中该初始化不应该在指定方法中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/command/&#123;id&#125;&quot;)</span><br><span class="line">public User findUserCommand(@PathVariable(&quot;id&quot;) Long id) throws ExecutionException, InterruptedException &#123;</span><br><span class="line">    HystrixRequestContext.initializeContext();</span><br><span class="line">    UserCommand u1 = new UserCommand(restTemplate,id);</span><br><span class="line">    UserCommand u2 = new UserCommand(restTemplate,id);</span><br><span class="line">    UserCommand u3 = new UserCommand(restTemplate,id);</span><br><span class="line">    UserCommand u4 = new UserCommand(restTemplate,id);</span><br><span class="line">    User user1 = u1.execute();</span><br><span class="line">    System.out.println(&quot;第一次请求&quot;+user1);</span><br><span class="line">    User user2 = u2.execute();</span><br><span class="line">    System.out.println(&quot;第二次请求&quot;+user2);</span><br><span class="line">    User user3 = u3.execute();</span><br><span class="line">    System.out.println(&quot;第三次请求&quot;+user3);</span><br><span class="line">    User user4 = u4.execute();</span><br><span class="line">    System.out.println(&quot;第四次请求&quot;+user4);</span><br><span class="line">    return user1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注解方式"><a href="#注解方式" class="headerlink" title="注解方式"></a>注解方式</h3><p>在SpringCloudHystrix中与缓存有关的三个注解： </p>
+<ul>
+<li>@CacheResult：用来标记其你去命令的结果应该被缓存，必须与@HystrixCommand注解结合使用； </li>
+<li>@CacheRemove：该注解用来让请求命令的缓存失败，失效的缓存根据定义的Key决定； </li>
+<li>@CacheKey：该注解用来在请求命令的参数上标记，是其作文缓存的Key值，如果没有标注则会使用所有参数。如果同时使用了@CacheResult和 @CacheRemove注解的cacheKeyMethod方法指定缓存Key生成，那么该注解将不会起作用。<br>设置请求缓存，修改ArticleService方法，</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public class ArticleService &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    @HystrixCommand</span><br><span class="line">    @CacheResult</span><br><span class="line">    public User getUserById(Long id)&#123;</span><br><span class="line">        return restTemplate.getForObject(&quot;http://USER-SERVICE/user/&#123;1&#125;&quot;,User.class,id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/cache/&#123;id&#125;&quot;)</span><br><span class="line">public User findUserCache(@PathVariable(&quot;id&quot;) Long id)&#123;</span><br><span class="line">    HystrixRequestContext.initializeContext();</span><br><span class="line">    User user1  = articleService.getUserById(id);</span><br><span class="line">    System.out.println(&quot;第一次请求&quot;+user1);</span><br><span class="line">    User user2 = articleService.getUserById(id);</span><br><span class="line">    System.out.println(&quot;第二次请求&quot;+user2);</span><br><span class="line">    User user3 = articleService.getUserById(id);</span><br><span class="line">    System.out.println(&quot;第三次请求&quot;+user3);</span><br><span class="line">    User user4 =articleService.getUserById(id);</span><br><span class="line">    System.out.println(&quot;第四次请求&quot;+user4);</span><br><span class="line">   return articleService.getUserById(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义缓存的key<br>使用@CacheKey，该注解除了可以指定方法参数作为缓存key之外，还可以指定方法参数对象的内不属性作为Key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@HystrixCommand</span><br><span class="line">@CacheResult</span><br><span class="line">public User getUserById(@CacheKey(&quot;id&quot;) Long id)&#123;</span><br><span class="line">    return restTemplate.getForObject(&quot;http://USER-SERVICE/user/&#123;1&#125;&quot;,User.class,id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用@CacheResult和@CacheRemove的cacheKeyMethod属性指定Key，如果与上面的CacheKey注解一起使用，则CacheKey将失效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@HystrixCommand</span><br><span class="line">@CacheResult(cacheKeyMethod = &quot;getCacheKey&quot;)</span><br><span class="line">public User getUserById(Long id)&#123;</span><br><span class="line">    return restTemplate.getForObject(&quot;http://USER-SERVICE/user/&#123;1&#125;&quot;,User.class,id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private Long getCacheKey(Long id)&#123;</span><br><span class="line">    return id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/wulinbaba" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 wulin<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
