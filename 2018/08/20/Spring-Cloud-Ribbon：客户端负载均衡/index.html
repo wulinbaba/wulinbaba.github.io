@@ -197,12 +197,7 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h1 id="Spring-Cloud-Ribbon：客户端负载均衡"><a href="#Spring-Cloud-Ribbon：客户端负载均衡" class="headerlink" title="Spring Cloud Ribbon：客户端负载均衡"></a>Spring Cloud Ribbon：客户端负载均衡</h1><p>从@LoadBalanced注解源码的注释中可以知道，该注释用来给RestTemplate做标记，以使用负载均衡的客户端（LoadBalancerClient）来配置它。</p>
 <p>从LoadBalancerAutoConfiguration类头上的注解可以知道，Ribbon实现的负载均衡自动化配置<strong>需要满足下面两个条件</strong>。</p>
-<ul>
-<li><p>@ConditionalOnClass(RestTemplate.class)：RestTemplate类必须保存在当前工作环境中。</p>
-</li>
-<li><p>@ConditionalOnBean(LoadBalancerClient.class)：在Spring的Bean工程里必须有LoadBalancerClient的实现Bean。</p>
-</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@ConditionalOnClass(RestTemplate.class)：RestTemplate类必须保存在当前工作环境中。</span><br><span class="line">@ConditionalOnBean(LoadBalancerClient.class)：在Spring的Bean工程里必须有LoadBalancerClient的实现Bean。</span><br></pre></td></tr></table></figure>
 <p>在自动化配置类中，主要做了下面三件事：</p>
 <p>1) 创建了一个LoadBalancerInterceptor的Bean，用于实现对客户端发起请求时进行拦截，以实现客户端负载均衡。</p>
 <p>2) 创建了一个RestTemplateCustomizer的Bean，用于给RestTemplate增加LoadBalancerInterceptor拦截器。</p>
