@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="Spring Cloud Feign：声明式服务调用在Spring Cloud Ribbon中，只是简单的使用RestTemplate来实现调用，通常会针对各个微服务自行封装一些客户端类来包装这些依赖服务的调用。
+由于RestTemplate的封装，几乎每一个调用都是简单的模板化内容。Spring "/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="wulin"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Spring Cloud Feign：声明式服务调用"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Spring Cloud Feign：声明式服务调用在Spring Cloud Ribbon中，只是简单的使用RestTemplate来实现调用，通常会针对各个微服务自行封装一些客户端类来包装这些依赖服务的调用。
+由于RestTemplate的封装，几乎每一个调用都是简单的模板化内容。Spring "/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="wulin&#39;s"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.com/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.com/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Spring Cloud Feign：声明式服务调用 - wulin&#39;s</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/wulinbaba/wulinbaba.github.io">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Spring Cloud Feign：声明式服务调用</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-08-22
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Spring-Cloud-Feign：声明式服务调用"><a href="#Spring-Cloud-Feign：声明式服务调用" class="headerlink" title="Spring Cloud Feign：声明式服务调用"></a>Spring Cloud Feign：声明式服务调用</h1><p>在Spring Cloud Ribbon中，只是简单的使用RestTemplate来实现调用，通常会针对各个微服务自行封装一些客户端类来包装这些依赖服务的调用。</p>
+<p>由于RestTemplate的封装，几乎每一个调用都是简单的模板化内容。Spring CLoud Feign在此基础上做了进一步封装。在Spring Cloud Feign的实现下，我们只需创建一个接口并用注解的方式来配置它，即可完成对服务提供方的接口绑定，简化了在Spring Cloud Ribbon时自行封装服务调用客户端的开发量。</p>
+<p>Feign整合了Ribbon和Hystrix，可以让我们不再需要显式地使用这两个组件。此外，Spring Cloud还对Feign提供了Spring MVC注解的支持，也使得我们在Web中可以使用同一个HttpMessageConverter。</p>
+<p>总的来说，Feign具有如下特性：</p>
+<ul>
+<li>可插拔的注解支持，包括Feign注解和JAX-RS注解;</li>
+<li>支持可插拔的HTTP编码器和解码器;</li>
+<li>支持Hystrix和它的Fallback;</li>
+<li>支持Ribbon的负载均衡;</li>
+<li>支持HTTP请求和响应的压缩。</li>
+</ul>
+<h2 id="一、快速入门"><a href="#一、快速入门" class="headerlink" title="一、快速入门"></a>一、快速入门</h2><p>1、修改pom.xml，添加依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>2、编写应用主类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@EnableFeignClients</span><br><span class="line">@EnableDiscoveryClient</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class FeignConsumerApplication &#123;</span><br><span class="line">    </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(FeignConsumerApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、定义HelloService接口，通过@FeignClient注解指定服务名来绑定服务，然后使用Spring MVC的注解来绑定具体服务提供的REST接口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">@FeignClient(&quot;hello-service&quot;)</span><br><span class="line">public interface HelloService &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;/hello&quot;)</span><br><span class="line">    String hello();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、创建一个ConsumerController来实现对Feign客户端的调用。使用@Autowired直接注入上面定义的Service实例，并绑定HELLO-SERVICE服务接口的客户端来发起调用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    HelloService helloService;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/feign-consumer&quot;,method = RequestMethod.GET)</span><br><span class="line">    public String helloConsumer()&#123;</span><br><span class="line">        return helloService.hello();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、编写配置文件application.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=feign-consumer</span><br><span class="line">server.port=9001</span><br><span class="line"></span><br><span class="line">eureka.client.service-url.defaultZone=http://localhost:1111/eureka/</span><br></pre></td></tr></table></figure>
+<p>6、测试验证<br><img src="/2018/08/22/Spring-Cloud-Feign：声明式服务调用/1.png" alt=""></p>
+<p><img src="/2018/08/22/Spring-Cloud-Feign：声明式服务调用/2.png" alt="">二、参数绑定</p>
+<p>Feign支持多种注解，在使用Feign时，我们可以根据需要使用Feign自带的注解或者JAX-RS注解。Spring Cloud对Feign进行了增强，使得Feign支持了Spring MVC注解。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value = &quot;/hello1&quot;,method = RequestMethod.GET)</span><br><span class="line">String hello(@RequestParam(&quot;name&quot;)String name);</span><br><span class="line"></span><br><span class="line">@RequestMapping(value = &quot;/hello2&quot;,method = RequestMethod.GET)</span><br><span class="line">String hello(@RequestHeader(&quot;name&quot;)String name,@RequestHeader(&quot;age&quot;)Integer age);</span><br><span class="line"></span><br><span class="line">@RequestMapping(value = &quot;/hello3&quot;,method = RequestMethod.POST)</span><br><span class="line">String hello(@RequestBody User user);</span><br></pre></td></tr></table></figure>
+<p>在Spring MVC中我们常用的注解有：</p>
+<ul>
+<li>@RequestParam 绑定单个请求参数值;</li>
+<li>@PathVariable 绑定URI模板变量值;</li>
+<li>@RequestHeader 绑定请求头数据;</li>
+<li>@RequestBody 绑定请求的内容区数据并能进行自动类型转换等。</li>
+</ul>
+<p>User对象定义如下(省略了get、set)。需要注意的是，这里必须要有User的默认构造函数，不然Spring Cloud Feign根据JSON字符串转换User对象时会抛出异常。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class User &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    public User()&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public User(String name, Integer age)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString()&#123;</span><br><span class="line">        return &quot;name=&quot; + name + &quot;, age=&quot; + age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在ConsumerController中新增一个”/feign-consumer2”接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    HelloService helloService;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/feign-consumer&quot;,method = RequestMethod.GET)</span><br><span class="line">    public String helloConsumer()&#123;</span><br><span class="line">        return helloService.hello();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/feign-consumer2&quot;,method = RequestMethod.GET)</span><br><span class="line">    public String helloConsumer2()&#123;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        sb.append(helloService.hello()).append(&apos;\n&apos;);</span><br><span class="line">        sb.append(helloService.hello(&quot;DIDI&quot;)).append(&apos;\n&apos;);</span><br><span class="line">        sb.append(helloService.hello(&quot;DIDI&quot;,30)).append(&apos;\n&apos;);</span><br><span class="line">        sb.append(helloService.hello(new User(&quot;DIDI&quot;,30))).append(&apos;\n&apos;);</span><br><span class="line">        return sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2018/08/22/Spring-Cloud-Feign：声明式服务调用/3.png" alt=""></p>
+<h2 id="三、继承特征"><a href="#三、继承特征" class="headerlink" title="三、继承特征"></a>三、继承特征</h2><p>在服务提供方HelloService中，接口的定义如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class HelloController &#123;</span><br><span class="line"></span><br><span class="line">    private static Logger logger =LogManager.getLogger(HelloController.class);</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private DiscoveryClient client;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/hello&quot;,method = RequestMethod.GET)</span><br><span class="line">    public String hello() throws Exception&#123;</span><br><span class="line">        return &quot;Hello World2&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/hello1&quot;,method = RequestMethod.GET)</span><br><span class="line">    public String hello(@RequestParam String name)&#123;</span><br><span class="line">        return &quot;Hello2&quot; + name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/hello2&quot;,method = RequestMethod.GET)</span><br><span class="line">    public User hello(@RequestHeader String name, @RequestHeader Integer age)&#123;</span><br><span class="line">        return new User(name,age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/hello3&quot;,method = RequestMethod.POST)</span><br><span class="line">    public String hello(@RequestBody User user)&#123;</span><br><span class="line">        return &quot;Hello2&quot; + user.getName() + &quot;,&quot; + user.getAge();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以发现，HelloService和FeignConsumer中的接口声明几乎是一样的。我们几乎完全可以从服务提供方的Controller中复制构建出相应的服务客户端绑定接口。<br>在Spring Cloud Feign中，针对该问题提供了继承特征来帮助解决这些复制操作，进一步减少代码量。<br>1、为了复用DTO与接口定义，创建一个基础的Maven工程hello-service-api，并修改pom.xml，添加依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>2、将上一节中实现的User对象复制到工程中com.example.dto.User<br>3、创建com.example.service.HelloService接口，内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;/refactor&quot;)</span><br><span class="line">public interface HelloService &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/hello4&quot;,method = RequestMethod.GET)</span><br><span class="line">    String hello(@RequestParam(&quot;name&quot;) String name);</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/hello5&quot;,method = RequestMethod.GET)</span><br><span class="line">    User user(@RequestHeader(&quot;name&quot;) String name,@RequestHeader(&quot;age&quot;) Integer age);</span><br><span class="line">    </span><br><span class="line">    @RequestMapping(value = &quot;/hello6&quot;,method = RequestMethod.POST)</span><br><span class="line">    String hello(@RequestBody User user);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、下面对hello-service进行重构，在pom.xml的dependency节点中，新增对hello-service-api的依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.example&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;hello-service-api&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>5、创建RefactorHelloController类继承hello-service-api中定义的接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class RefactorHelloContorller implements HelloService&#123;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public String hello(@RequestParam(&quot;name&quot;) String name) &#123;</span><br><span class="line">		return &quot;hello &quot; + name;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public String hello(@RequestHeader(&quot;name&quot;) String name, </span><br><span class="line">	  @RequestHeader(&quot;age&quot;) Integer age) &#123;</span><br><span class="line">		return new User(name,age);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public String hello(@RequestBody User user) &#123;</span><br><span class="line">		return user.toString();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、下面对服务消费者feign-consumer进行重构，在pom.xml的dependency节点中，新增对hello-service-api的依赖，步骤同上<br>7、创建RefactorHelloService接口，并继承，然后添加@FeignClient注解来绑定服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@FeignClient(value = &quot;HELLO-SERVICE&quot;)</span><br><span class="line">public interface RefactorHelloService extends com.example.service.HelloService&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>7、最后，在ConsumerController中，注入RefactorHelloService的实例，并新增一个请求”/feign-consumer3”来触发RefactorHelloService实例的调用</p>
+<p>8、优点与缺点<br>优点：可以将接口的定义从Controller中剥离，同时配合Maven私有仓库轻易的实现接口定义共享，从而减少服务客户端的绑定配置。<br>缺点：接口在构建期间就建立起了依赖，那么接口变动就会对项目构建造成影响。服务提供方修改了一个接口定义可能会导致客户端工程的构建失败。<br>总结：建议在开发评审期间严格遵守面向对象的开闭原则，尽可能的做好前后版本的兼容。</p>
+<h2 id="四、Ribbon配置"><a href="#四、Ribbon配置" class="headerlink" title="四、Ribbon配置"></a>四、Ribbon配置</h2><p>由于Spring Cloud Feign的客户端负载均衡是通过Spring Cloud Ribbon实现的，所有可以直接通过配置Ribbon客户端的方式来自定义各个服务客户端调用的参数。</p>
+<h3 id="重试机制"><a href="#重试机制" class="headerlink" title="重试机制"></a>重试机制</h3><p>在Spring Cloud Feign中默认实现了请求的重试机制。<br>通过设置MaxAutoRetriesNextServer参数，来修改重试更换实例次数。<br>需要注意的是，Ribbon的超时与Hytrix的超时是两个概念。为了让重试机制有效，需要让Hystrix的超时时间大于Ribbon的超时时间。否则Hystrix命令超时后直接熔断，重试机制就没有意义了。</p>
+<h2 id="五、Hystrix配置"><a href="#五、Hystrix配置" class="headerlink" title="五、Hystrix配置"></a>五、Hystrix配置</h2><p>在Spring Cloud Feign中，除了引入了用于客户端负载均衡的Spring Cloud Ribbon之外，还引入了服务保护与容错的工具Hystrix。<br>默认情况下，Spring Cloud Feign会为将所有Feign客户端的方法都封装到Hystrix命令中进行服务保护。</p>
+<h3 id="禁用Hystrix"><a href="#禁用Hystrix" class="headerlink" title="禁用Hystrix"></a>禁用Hystrix</h3><p>可以通过feign.hystrix.enabled=false来关闭Hystrix功能。<br>如果不想全局关闭Hystrix支持，而是针对某个服务客户端关闭Hystrix支持，需要使用@Scope(“prototype”)注解为指定客户端配置Feign.Builder实例。</p>
+<h3 id="服务降级配置"><a href="#服务降级配置" class="headerlink" title="服务降级配置"></a>服务降级配置</h3><p>Spring Cloud Feign提供了一种简单的定义方式。只需要为Feign客户端的定义接口编写一个具体的接口实现类。<br>比如为HelloService接口实现一个服务降级类HelloServiceFallback，其中每个重写方法的实现逻辑都可以用来定义相应的服务降级逻辑。<br>接着在服务绑定接口HelloService中，通过@FeignClient注解的fallback属性来指定对应的服务降级实现类。</p>
+<h2 id="六、其他配置"><a href="#六、其他配置" class="headerlink" title="六、其他配置"></a>六、其他配置</h2><p>1、请求压缩<br>Spring Cloud Feign支持对请求与响应进行GZIP压缩，以减少通信过程中的性能损耗。</p>
+<p>2.日志配置<br>Spring Cloud Feign在构建被@FeignClient注解修饰的服务客户端时，会为每一个客户端都创建一个feign.Logger实例，可以利用该日志对象的DEBUG模式来分析Feign的请求细节。</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/wulinbaba" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 wulin<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
