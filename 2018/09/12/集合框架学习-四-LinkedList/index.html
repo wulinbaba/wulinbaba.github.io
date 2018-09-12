@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="LinkedList概括的说，LinkedList 是线程不安全的，允许元素为null的双向链表。 
+其底层数据结构是链表，它实现List, Deque, Cloneable, java.io.Serializable接口，它实现了Deque,所以它也可以作为一个双端队列。
+因其底层数据结构是链表，"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="wulin"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="集合框架学习(四)LinkedList"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="LinkedList概括的说，LinkedList 是线程不安全的，允许元素为null的双向链表。 
+其底层数据结构是链表，它实现List, Deque, Cloneable, java.io.Serializable接口，它实现了Deque,所以它也可以作为一个双端队列。
+因其底层数据结构是链表，"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="wulin&#39;s"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.com/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.com/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>集合框架学习(四)LinkedList - wulin&#39;s</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/wulinbaba/wulinbaba.github.io">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>集合框架学习(四)LinkedList</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-09-12
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h1><p>概括的说，LinkedList 是线程不安全的，允许元素为null的双向链表。 </p>
+<p>其底层数据结构是链表，它实现List<e>, Deque<e>, Cloneable, java.io.Serializable接口，它实现了Deque<e>,所以它也可以作为一个双端队列。</e></e></e></p>
+<p>因其底层数据结构是<strong>链表</strong>，所以可想而知，它的增删只需要移动指针即可，故时间效率较高。不需要批量扩容，也不需要预留空间，所以空间效率比ArrayList高。</p>
+<p>缺点就是需要随机访问元素时，时间效率很低，虽然底层在根据下标查询Node的时候，会根据index判断目标Node在前半段还是后半段，然后决定是顺序还是逆序查询，以提升时间效率。不过随着n的增大，总体时间效率依然很低。</p>
+<h2 id="AbstractSequentialList"><a href="#AbstractSequentialList" class="headerlink" title="AbstractSequentialList"></a>AbstractSequentialList</h2><p>在介绍LinkedList的源码之前，先介绍一下AbstractSequentialList。毕竟，LinkedList是AbstractSequentialList的子类。</p>
+<p>AbstractSequentialList 实现了get(int index)、set(int index, E element)、add(int index, E element) 和 remove(int index)这些函数。这些接口都是随机访问List的，LinkedList是双向链表；既然它继承于AbstractSequentialList，就相当于已经实现了“get(int index)这些接口”。</p>
+<p>此外，我们若需要通过AbstractSequentialList自己实现一个列表，只需要扩展此类，并提供 listIterator() 和 size() 方法的实现即可。若要实现不可修改的列表，则需要实现列表迭代器的 hasNext、next、hasPrevious、previous 和 index 方法即可。</p>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class LinkedList&lt;E&gt;</span><br><span class="line">    extends AbstractSequentialList&lt;E&gt;</span><br><span class="line">    implements List&lt;E&gt;, Deque&lt;E&gt;, Cloneable, java.io.Serializable</span><br><span class="line">&#123;</span><br><span class="line">    //集合元素数量</span><br><span class="line">    transient int size = 0;</span><br><span class="line">    //链表头节点</span><br><span class="line">    transient Node&lt;E&gt; first;</span><br><span class="line">    //链表尾节点</span><br><span class="line">    transient Node&lt;E&gt; last;</span><br><span class="line">    //啥都不干</span><br><span class="line">    public LinkedList() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    //调用     public boolean addAll(Collection&lt;? extends E&gt; c)  将集合c所有元素插入链表中</span><br><span class="line">    public LinkedList(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">        this();</span><br><span class="line">        addAll(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="节点Node结构"><a href="#节点Node结构" class="headerlink" title="节点Node结构"></a>节点Node结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private static class Node&lt;E&gt; &#123;</span><br><span class="line">    E item;//元素值</span><br><span class="line">    Node&lt;E&gt; next;//后置节点</span><br><span class="line">    Node&lt;E&gt; prev;//前置节点</span><br><span class="line"></span><br><span class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</span><br><span class="line">        this.item = element;</span><br><span class="line">        this.next = next;</span><br><span class="line">        this.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出，这是一个双向链表。</p>
+<h2 id="一、增-Add"><a href="#一、增-Add" class="headerlink" title="一、增(Add)"></a>一、增(Add)</h2><p>1、插入单个节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//在尾部插入一个节点： add</span><br><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    linkLast(e);</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//生成新节点 并插入到 链表尾部， 更新 last/first 节点。</span><br><span class="line">void linkLast(E e) &#123; </span><br><span class="line">    final Node&lt;E&gt; l = last; //记录原尾部节点</span><br><span class="line">    final Node&lt;E&gt; newNode = new Node&lt;&gt;(l, e, null);//以原尾部节点为新节点的前置节点</span><br><span class="line">    last = newNode;//更新尾部节点</span><br><span class="line">    if (l == null)//若原链表为空链表，需要额外更新头结点</span><br><span class="line">        first = newNode;</span><br><span class="line">    else//否则更新原尾节点的后置节点为现在的尾节点（新节点）</span><br><span class="line">        l.next = newNode;</span><br><span class="line">    size++;//修改size</span><br><span class="line">    modCount++;//修改modCount</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、在指定下标index处插入单个节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//在指定下标，index处，插入一个节点</span><br><span class="line">public void add(int index, E element) &#123;</span><br><span class="line">    checkPositionIndex(index);//检查下标是否越界[0,size]</span><br><span class="line">    if (index == size)//在尾节点后插入</span><br><span class="line">        linkLast(element);</span><br><span class="line">    else//在中间插入</span><br><span class="line">        linkBefore(element, node(index));</span><br><span class="line">&#125;</span><br><span class="line">//在succ节点前，插入一个新节点e</span><br><span class="line">void linkBefore(E e, Node&lt;E&gt; succ) &#123;</span><br><span class="line">    // assert succ != null;</span><br><span class="line">    //保存后置节点的前置节点</span><br><span class="line">    final Node&lt;E&gt; pred = succ.prev;</span><br><span class="line">    //以前置和后置节点和元素值e 构建一个新节点</span><br><span class="line">    final Node&lt;E&gt; newNode = new Node&lt;&gt;(pred, e, succ);</span><br><span class="line">    //新节点new是原节点succ的前置节点</span><br><span class="line">    succ.prev = newNode;</span><br><span class="line">    if (pred == null)//如果之前的前置节点是空，说明succ是原头结点。所以新节点是现在的头结点</span><br><span class="line">        first = newNode;</span><br><span class="line">    else//否则构建前置节点的后置节点为new</span><br><span class="line">        pred.next = newNode;</span><br><span class="line">    size++;//修改数量</span><br><span class="line">    modCount++;//修改modCount</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.批量插入addAll()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">//addAll ,在尾部批量增加</span><br><span class="line">public boolean addAll(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">    return addAll(size, c);//以size为插入下标，插入集合c中所有元素</span><br><span class="line">&#125;</span><br><span class="line">//以index为插入下标，插入集合c中所有元素</span><br><span class="line">public boolean addAll(int index, Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">    checkPositionIndex(index);//检查越界 [0,size] 闭区间</span><br><span class="line"></span><br><span class="line">    Object[] a = c.toArray();//拿到目标集合数组</span><br><span class="line">    int numNew = a.length;//新增元素的数量</span><br><span class="line">    if (numNew == 0)//如果新增元素数量为0，则不增加，并返回false</span><br><span class="line">        return false;</span><br><span class="line"></span><br><span class="line">    Node&lt;E&gt; pred, succ;  //index节点的前置节点，后置节点</span><br><span class="line">    if (index == size) &#123; //在链表尾部追加数据</span><br><span class="line">        succ = null;  //size节点（队尾）的后置节点一定是null</span><br><span class="line">        pred = last;//前置节点是队尾</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        succ = node(index);//取出index节点，作为后置节点</span><br><span class="line">        pred = succ.prev; //前置节点是，index节点的前一个节点</span><br><span class="line">    &#125;</span><br><span class="line">    //链表批量增加，是靠for循环遍历原数组，依次执行插入节点操作。对比ArrayList是通过System.arraycopy完成批量增加的</span><br><span class="line">    for (Object o : a) &#123;//遍历要添加的节点。</span><br><span class="line">        @SuppressWarnings(&quot;unchecked&quot;) E e = (E) o;</span><br><span class="line">        Node&lt;E&gt; newNode = new Node&lt;&gt;(pred, e, null);//以前置节点 和 元素值e，构建new一个新节点，</span><br><span class="line">        if (pred == null) //如果前置节点是空，说明是头结点</span><br><span class="line">            first = newNode;</span><br><span class="line">        else//否则 前置节点的后置节点设置问新节点</span><br><span class="line">            pred.next = newNode;</span><br><span class="line">        pred = newNode;//步进，当前的节点为前置节点了，为下次添加节点做准备</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (succ == null) &#123;//循环结束后，判断，如果后置节点是null。 说明此时是在队尾append的。</span><br><span class="line">        last = pred; //则设置尾节点</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        pred.next = succ; // 否则是在队中插入的节点 ，更新前置节点 后置节点</span><br><span class="line">        succ.prev = pred; //更新后置节点的前置节点</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    size += numNew;  // 修改数量size</span><br><span class="line">    modCount++;  //修改modCount</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//根据index 查询出Node，</span><br><span class="line">Node&lt;E&gt; node(int index) &#123;</span><br><span class="line">    // assert isElementIndex(index);</span><br><span class="line">//通过下标获取某个node 的时候，（增、查 ），会根据index处于前半段还是后半段 进行一个折半，以提升查询效率</span><br><span class="line">    if (index &lt; (size &gt;&gt; 1)) &#123;</span><br><span class="line">        Node&lt;E&gt; x = first;</span><br><span class="line">        for (int i = 0; i &lt; index; i++)</span><br><span class="line">            x = x.next;</span><br><span class="line">        return x;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        Node&lt;E&gt; x = last;</span><br><span class="line">        for (int i = size - 1; i &gt; index; i--)</span><br><span class="line">            x = x.prev;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void checkPositionIndex(int index) &#123;</span><br><span class="line">    if (!isPositionIndex(index))</span><br><span class="line">        throw new IndexOutOfBoundsException(outOfBoundsMsg(index));</span><br><span class="line">&#125;</span><br><span class="line">private boolean isPositionIndex(int index) &#123;</span><br><span class="line">    return index &gt;= 0 &amp;&amp; index &lt;= size;  //插入时的检查，下标可以是size [0,size]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>小结：</p>
+<ul>
+<li>链表批量增加，是靠<strong>for循环遍历原数组，依次执行插入节点操作</strong>。对比ArrayList是通过System.arraycopy完成批量增加的。</li>
+<li>通过下标获取某个node 的时候，（add select），<strong>会根据index处于前半段还是后半段 进行一个折半，以提升查询效率</strong>。</li>
+</ul>
+<h2 id="二、删-remove"><a href="#二、删-remove" class="headerlink" title="二、删(remove)"></a>二、删(remove)</h2><p>1、根据下标删除节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">//删：remove目标节点</span><br><span class="line">public E remove(int index) &#123;</span><br><span class="line">    checkElementIndex(index);//检查是否越界 下标[0,size)</span><br><span class="line">    return unlink(node(index));//从链表上删除某节点</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">//从链表上删除x节点</span><br><span class="line">E unlink(Node&lt;E&gt; x) &#123;</span><br><span class="line">    // assert x != null;</span><br><span class="line">    final E element = x.item; //当前节点的元素值</span><br><span class="line">    final Node&lt;E&gt; next = x.next; //当前节点的后置节点</span><br><span class="line">    final Node&lt;E&gt; prev = x.prev;//当前节点的前置节点</span><br><span class="line"></span><br><span class="line">    if (prev == null) &#123; //如果前置节点为空(说明当前节点原本是头结点)</span><br><span class="line">        first = next;  //则头结点等于后置节点 </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">        prev.next = next;</span><br><span class="line">        x.prev = null; //将当前节点的 前置节点置空</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (next == null) &#123;//如果后置节点为空（说明当前节点原本是尾节点）</span><br><span class="line">        last = prev; //则 尾节点为前置节点</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        next.prev = prev;</span><br><span class="line">        x.next = null;//将当前节点的 后置节点置空</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    x.item = null; //将当前元素值置空</span><br><span class="line">    size--; //修改数量</span><br><span class="line">    modCount++;  //修改modCount</span><br><span class="line">    return element; //返回取出的元素值</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void checkElementIndex(int index) &#123;</span><br><span class="line">    if (!isElementIndex(index))</span><br><span class="line">        throw new IndexOutOfBoundsException(outOfBoundsMsg(index));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//下标[0,size)</span><br><span class="line">private boolean isElementIndex(int index) &#123;</span><br><span class="line">    return index &gt;= 0 &amp;&amp; index &lt; size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2、根据item删除节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">//因为要考虑 null元素，也是分情况遍历</span><br><span class="line">public boolean remove(Object o) &#123;</span><br><span class="line">    if (o == null) &#123;//如果要删除的是null节点(从remove和add 里 可以看出，允许元素为null)</span><br><span class="line">        //遍历每个节点 对比</span><br><span class="line">        for (Node&lt;E&gt; x = first; x != null; x = x.next) &#123;</span><br><span class="line">            if (x.item == null) &#123;</span><br><span class="line">                unlink(x);</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        for (Node&lt;E&gt; x = first; x != null; x = x.next) &#123;</span><br><span class="line">            if (o.equals(x.item)) &#123;</span><br><span class="line">                unlink(x);</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">//将节点x，从链表中删除</span><br><span class="line">E unlink(Node&lt;E&gt; x) &#123;</span><br><span class="line">    // assert x != null;</span><br><span class="line">    final E element = x.item;//继续元素值，供返回</span><br><span class="line">    final Node&lt;E&gt; next = x.next;//保存当前节点的后置节点</span><br><span class="line">    final Node&lt;E&gt; prev = x.prev;//前置节点</span><br><span class="line"></span><br><span class="line">    if (prev == null) &#123;//前置节点为null，</span><br><span class="line">        first = next;//则首节点为next</span><br><span class="line">    &#125; else &#123;//否则 更新前置节点的后置节点</span><br><span class="line">        prev.next = next;</span><br><span class="line">        x.prev = null;//记得将要删除节点的前置节点置null</span><br><span class="line">    &#125;</span><br><span class="line">    //如果后置节点为null，说明是尾节点</span><br><span class="line">    if (next == null) &#123;</span><br><span class="line">        last = prev;</span><br><span class="line">    &#125; else &#123;//否则更新 后置节点的前置节点</span><br><span class="line">        next.prev = prev;</span><br><span class="line">        x.next = null;//记得删除节点的后置节点为null</span><br><span class="line">    &#125;</span><br><span class="line">    //将删除节点的元素值置null，以便GC</span><br><span class="line">    x.item = null;</span><br><span class="line">    size--;//修改size</span><br><span class="line">    modCount++;//修改modCount</span><br><span class="line">    return element;//返回删除的元素值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>总结：</p>
+<ul>
+<li>按下标删，也是先根据index找到Node，然后去链表上unlink掉这个Node。 </li>
+<li>按元素删，会先去遍历链表寻找是否有该Node，考虑到允许null值，所以会先做判断，找出指定元素的第一个节点，然后再去unlink它。</li>
+</ul>
+<h2 id="三、改-set"><a href="#三、改-set" class="headerlink" title="三、改(set)"></a>三、改(set)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public E set(int index, E element) &#123;</span><br><span class="line">    checkElementIndex(index); //检查越界[0,size)</span><br><span class="line">    Node&lt;E&gt; x = node(index);//取出对应的Node</span><br><span class="line">    E oldVal = x.item;//保存旧值 供返回</span><br><span class="line">    x.item = element;//用新值覆盖旧值</span><br><span class="line">    return oldVal;//返回旧值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>先根据index找到Node，然后替换值，改不修改modCount。</p>
+<h2 id="四、查-get"><a href="#四、查-get" class="headerlink" title="四、查(get)"></a>四、查(get)</h2><p>1、根据下标查找节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public E get(int index) &#123;</span><br><span class="line">    checkElementIndex(index);//判断是否越界 [0,size)</span><br><span class="line">    return node(index).item; //调用node()方法 取出 Node节点，</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、根据元素，查找从链表头部开始的第一个下标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public int indexOf(Object o) &#123;</span><br><span class="line">    int index = 0;</span><br><span class="line">    if (o == null) &#123;//如果目标对象是null</span><br><span class="line">    //遍历链表</span><br><span class="line">        for (Node&lt;E&gt; x = first; x != null; x = x.next) &#123;</span><br><span class="line">            if (x.item == null)</span><br><span class="line">                return index;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;////遍历链表</span><br><span class="line">        for (Node&lt;E&gt; x = first; x != null; x = x.next) &#123;</span><br><span class="line">            if (o.equals(x.item))</span><br><span class="line">                return index;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、根据元素，查找从链表尾部开始的第一个下标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public int lastIndexOf(Object o) &#123;</span><br><span class="line">    int index = size;</span><br><span class="line">    if (o == null) &#123;</span><br><span class="line">        for (Node&lt;E&gt; x = last; x != null; x = x.prev) &#123;</span><br><span class="line">            index--;</span><br><span class="line">            if (x.item == null)</span><br><span class="line">                return index;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        for (Node&lt;E&gt; x = last; x != null; x = x.prev) &#123;</span><br><span class="line">            index--;</span><br><span class="line">            if (o.equals(x.item))</span><br><span class="line">                return index;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查不修改modCount。</p>
+<h2 id="toArray"><a href="#toArray" class="headerlink" title="toArray()"></a>toArray()</h2><p>顺带看一下toArray()，毕竟这是个高频的API</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public Object[] toArray() &#123;</span><br><span class="line">    //new 一个新数组 然后遍历链表，将每个元素存在数组里，返回</span><br><span class="line">    Object[] result = new Object[size];</span><br><span class="line">    int i = 0;</span><br><span class="line">    for (Node&lt;E&gt; x = first; x != null; x = x.next)</span><br><span class="line">        result[i++] = x.item;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>LinkedList 是双向链表。</p>
+<ul>
+<li>链表批量增加，是<strong>靠for循环遍历原数组，依次执行插入节点操作</strong>。对比ArrayList是通过System.arraycopy完成批量增加的。<strong>增加一定会修改modCount</strong>。</li>
+<li>通过下标获取某个node 的时候，（add select），<strong>会根据index处于前半段还是后半段 进行一个折半，以提升查询效率</strong>。</li>
+<li><strong>删也一定会修改modCount</strong>。 按下标删，也是先根据index找到Node，然后去链表上unlink掉这个Node。 按元素删，会先去遍历链表寻找是否有该Node，如果有，去链表上unlink掉这个Node。</li>
+<li>改也是先根据index找到Node，然后替换值。改不修改modCount。</li>
+<li>查本身就是根据index找到Node，查也不修改modCount。</li>
+<li>所以它的CRUD操作里，都涉及到根据index去找到Node的操作。</li>
+</ul>
+<p>ArrayList和LinkedList的大致区别如下:</p>
+<ul>
+<li>ArrayList是实现了基于<strong>动态数组</strong>的数据结构，LinkedList基于<strong>链表</strong>的数据结构。 </li>
+<li>对于随机访问<strong>get</strong>和<strong>set</strong>，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。 </li>
+<li>对于新增和删除操作<strong>add</strong>和<strong>remove</strong>，LinedList比较占优势，因为ArrayList要移动数据。</li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/wulinbaba" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 wulin<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

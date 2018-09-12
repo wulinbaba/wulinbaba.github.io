@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="Collection是元素集合的总接口，定义了一些基本的增删改查等方法，其中包括抽象方法、默认方法、继承方法三大类。
+抽象方法
+
+
+修饰符和类型
+方法
+描述
+
+
+
+
+boolean
+add(E e)
+在集合中增加指定元素
+
+
+boolean
+addAll(Collection&amp;lt;? extend"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="wulin"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="集合框架学习(二)Collection"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Collection是元素集合的总接口，定义了一些基本的增删改查等方法，其中包括抽象方法、默认方法、继承方法三大类。
+抽象方法
+
+
+修饰符和类型
+方法
+描述
+
+
+
+
+boolean
+add(E e)
+在集合中增加指定元素
+
+
+boolean
+addAll(Collection&amp;lt;? extend"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="wulin&#39;s"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.com/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.com/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>集合框架学习(二)Collection - wulin&#39;s</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/wulinbaba/wulinbaba.github.io">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>集合框架学习(二)Collection</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-09-12
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h1><p>是元素集合的总接口，定义了一些基本的增删改查等方法，其中包括抽象方法、默认方法、继承方法三大类。</p>
+<h2 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h2><table>
+<thead>
+<tr>
+<th>修饰符和类型</th>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>add(E e)</td>
+<td>在集合中增加指定元素</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>addAll(Collection&lt;? extends E&gt; c)</td>
+<td>将指定集合中所有元素添加到此集合中</td>
+</tr>
+<tr>
+<td>void</td>
+<td>clear()</td>
+<td>删除集合中所有元素</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>contains(Object o)</td>
+<td>如果集合中包含指定元素则返回true</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>containsAll(Collection&lt;?&gt; c)</td>
+<td>如果集合中包含指定集合中所有元素则返回true</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>equals(Object o)</td>
+<td>将指定对象与此集合进行比较相等则返回true</td>
+</tr>
+<tr>
+<td>int</td>
+<td>hashCode()</td>
+<td>返回此集合的哈希码</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>isEmpty()</td>
+<td>如果此集合不包含任何元素则返回true</td>
+</tr>
+<tr>
+<td>Iterator<e></e></td>
+<td>iterator()</td>
+<td>返回此集合中元素的迭代器</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>remove(Object o)</td>
+<td>从此集合中移除指定元素的单个实例</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>removeAll(Collection&lt;?&gt; c)</td>
+<td>删除集合中指定集合的所有元素</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>retainAll(Collection&lt;?&gt; c)</td>
+<td>仅保留集合中指定集合的所有元素</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size()</td>
+<td>返回此集合中的元素数</td>
+</tr>
+<tr>
+<td>Object[]</td>
+<td>toArray()</td>
+<td>返回包含此集合中所有元素的Object数组</td>
+</tr>
+<tr>
+<td><t> T[]</t></td>
+<td>toArray(T[] a)</td>
+<td>返回包含此集合中所有元素的T类数</td>
+</tr>
+</tbody>
+</table>
+<p>其中 <strong>toArray()</strong> 和 <strong>toArray(T[] a)</strong> 的差别在于：<br><strong>toArray()</strong>：返回的是Object数组，不能将整个Object数组强制类型转换成另一种类型的数组，若需要转换需要遍历数组进行，否则会造成java.lang.ClassCastException异常。<br><strong>toArray(T[] a)</strong>：返回的是a引用指向的T类型的数组（具体可看ArrayList的toArray实现，即若a指向的数组长度小于集合中的元素个数，会产生新的数组实例返回而不是返回a引用指向的数组实例），具体操作为将集合中所有元素复制到a引用指向的T类型的数组中，然后返回T类型数组的引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; T[] toArray(T[] a) &#123;</span><br><span class="line">        if (a.length &lt; size)</span><br><span class="line">            // 如果数组a的大小不够容纳，则创建一个运行时类型的新数组：</span><br><span class="line">            return (T[]) Arrays.copyOf(elementData, size, a.getClass());</span><br><span class="line">        System.arraycopy(elementData, 0, a, 0, size);</span><br><span class="line">        if (a.length &gt; size)</span><br><span class="line">            a[size] = null;</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="默认-拓展-方法："><a href="#默认-拓展-方法：" class="headerlink" title="默认(拓展)方法："></a>默认(拓展)方法：</h2><p>Java 8允许我们给接口添加非抽象的方法实现，只需要使用<strong>default关键字</strong>，接口中的非抽象方法又称为拓展方法。</p>
+<table>
+<thead>
+<tr>
+<th>修饰符和类型</th>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default Stream<e></e></td>
+<td>parallelStream()</td>
+<td>返回一个此集合的并行Stream Source</td>
+</tr>
+<tr>
+<td>default boolean</td>
+<td>removeIf(Predicate&lt;? super E&gt; filter)</td>
+<td>移除集合中满足指定Predicate的元素</td>
+</tr>
+<tr>
+<td>default Spliterator<e></e></td>
+<td>spliterator()</td>
+<td>返回一个可分割迭代器，用于并行遍历数据源中的元素</td>
+</tr>
+<tr>
+<td>default Stream<e></e></td>
+<td>stream()</td>
+<td>返回一个此集合的Stram Source</td>
+</tr>
+</tbody>
+</table>
+<p><strong>removeIf()</strong>：删除集合中满足filter指定条件的元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">default boolean removeIf(Predicate&lt;? super E&gt; filter) &#123;</span><br><span class="line">    Objects.requireNonNull(filter);</span><br><span class="line">    boolean removed = false;</span><br><span class="line">    final Iterator&lt;E&gt; each = iterator();</span><br><span class="line">    while (each.hasNext()) &#123;</span><br><span class="line">        if (filter.test(each.next())) &#123;</span><br><span class="line">            each.remove();</span><br><span class="line">            removed = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return removed;</span><br><span class="line">&#125;</span><br><span class="line">//使用方法 根据 返回布尔值 决定是否移除元素</span><br><span class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(Arrays.asList(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;));</span><br><span class="line">list.removeIf(str-&gt; str.length()&gt;3);</span><br><span class="line">System.out.println(list);</span><br><span class="line">//输出：[I, you, too]</span><br></pre></td></tr></table></figure>
+<h2 id="继承方法："><a href="#继承方法：" class="headerlink" title="继承方法："></a>继承方法：</h2><p>Collection类继承了java.lang.Iterable类，其中包含了一个方法void forEach(Consumer&lt;? super E&gt; action)，对集合执行accept操作，不需要将操作结果替换原来的元素，一般采用<strong>Lambda表达式</strong>使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">default void forEach(Consumer&lt;? super T&gt; action) &#123;</span><br><span class="line">    Objects.requireNonNull(action);</span><br><span class="line">    for (T t : this) &#123;</span><br><span class="line">        action.accept(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//使用方法 无返回值</span><br><span class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(Arrays.asList(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;));</span><br><span class="line">list.forEach( str-&gt; &#123;</span><br><span class="line">    if(str.length()&gt;2) System.out.println(str.toUpperCase());</span><br><span class="line">&#125;);</span><br><span class="line">//输出：</span><br><span class="line">//LOVE</span><br><span class="line">//YOU</span><br><span class="line">//TOO</span><br></pre></td></tr></table></figure>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set集合表示一个不允许包含重复元素的集合，继承Collection接口，没有提供额外的方法，但是有一个特性：若两个相同的元素加入到同一个Set集合中，则add()操作失败返回false且新元素不会被加入。</p>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>List集合表示一个可通过索引访问特定元素的集合，继承Collection接口。List中的元素是有序且可重复的。List可以精确的控制每个元素的插入位置，或删除某个位置元素，它的实现类ArrayList底层是由数组实现的。默认按照元素的添加顺序设置元素的索引。</p>
+<p>List接口继承Collection接口，因此有Collection的所有抽象方法，但由于List是有序集合（索引顺序），因此List接口增加了一些根据索引来操作集合的方法。</p>
+<ul>
+<li>抽象方法：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>修饰符和类型</th>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void</td>
+<td>add(int index, E element)</td>
+<td>将指定元素插入集合的指定位置</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>addAll(int index, Collection&lt;? extends E&gt; c)</td>
+<td>将指定集合的所有元素插入此集合的指定位置</td>
+</tr>
+<tr>
+<td>E</td>
+<td>get(int index)</td>
+<td>返回集合指定位置的元素</td>
+</tr>
+<tr>
+<td>int</td>
+<td>indexOf(Object o)</td>
+<td>返回集合中第一次出现指定元素的索引，若集合中不存在该元素则返回-1</td>
+</tr>
+<tr>
+<td>int</td>
+<td>lastIndexOf(Object o)</td>
+<td>返回集合中最后一次出现指定元素的索引，若集合中不存在该元素则返回-1</td>
+</tr>
+<tr>
+<td>ListIterator<e></e></td>
+<td>listIterator()</td>
+<td>返回集合的List迭代器</td>
+</tr>
+<tr>
+<td>ListIterator<e></e></td>
+<td>listIterator(int index)</td>
+<td>返回从集合指定位置开始的List迭代器</td>
+</tr>
+<tr>
+<td>E</td>
+<td>remove(int index)</td>
+<td>删除集合指定位置的元素</td>
+</tr>
+<tr>
+<td>E</td>
+<td>set(int index, E element)</td>
+<td>用指定元素替换集合指定位置的元素</td>
+</tr>
+<tr>
+<td>List<e></e></td>
+<td>subList(int fromIndex, int toIndex)</td>
+<td>返回[fromIndex,toIndex)之间的子集合</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>默认（拓展）方法：增加了两个拓展方法和重写了Collection的spliterator()默认方法：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>修饰符和类型</th>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default void</td>
+<td>replaceAll(UnaryOperator operator)</td>
+<td>根据operator参数重新设置集合的所有元素</td>
+</tr>
+<tr>
+<td>default void</td>
+<td>sort(Comparator&lt;? super E&gt; c)</td>
+<td>根据Comparator参数对集合的元素进行排序</td>
+</tr>
+</tbody>
+</table>
+<p><strong>replaceAll()</strong>：对每个元素执行operator操作，并用操作结果替换原来元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//源代码 本质为实现UnaryOperator接口的【T apply】方法并将结果替换原来的元素</span><br><span class="line">default void replaceAll(UnaryOperator&lt;E&gt; operator) &#123;</span><br><span class="line">    Objects.requireNonNull(operator);</span><br><span class="line">    final ListIterator&lt;E&gt; li = this.listIterator();</span><br><span class="line">    while (li.hasNext()) &#123;</span><br><span class="line">        li.set(operator.apply(li.next()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//使用方法</span><br><span class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(Arrays.asList(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;));</span><br><span class="line">list.replaceAll(str-&gt;&#123;</span><br><span class="line">    if(str.length()&gt;3) return str.toUpperCase();</span><br><span class="line">    else return str;</span><br><span class="line">&#125;);</span><br><span class="line">System.out.println(list);</span><br><span class="line">//输出：[I, LOVE, you, too]</span><br></pre></td></tr></table></figure>
+<p><strong>sort()</strong>：根据Comparator对集合元素进行排序，并用排序结果替换原来的集合排序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//源代码 本质为实现Comparator的【int compare(T o1,T o2)】方法，创建一个实例集合存储排序后的值，之后遍历实例数组将其复制到原集合中</span><br><span class="line">default void sort(Comparator&lt;? super E&gt; c) &#123;</span><br><span class="line">    Object[] a = this.toArray();</span><br><span class="line">    Arrays.sort(a, (Comparator) c);</span><br><span class="line">    ListIterator&lt;E&gt; i = this.listIterator();</span><br><span class="line">    for (Object e : a) &#123;</span><br><span class="line">        i.next();</span><br><span class="line">        i.set((E) e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//使用方法</span><br><span class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(Arrays.asList(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;));</span><br><span class="line">list.sort((str1,str2)-&gt;str2.length()-str1.length());</span><br><span class="line">System.out.println(list);</span><br><span class="line">//输出：[love, you, too, I]</span><br></pre></td></tr></table></figure>
+<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p>Queue集合是一个<strong>FIFO（先进先出）</strong>的队列集合，新元素<strong>插入（offer）到队列尾部</strong>，<strong>访问元素（poll）返回队列头部</strong>，通常<strong>不允许随机访问</strong>队列中的元素。</p>
+<p>Queue接口继承Collection接口，因此有Collection的所有抽象方法，但由于Queue是队列集合，因此Queue接口<strong>重写了add方法</strong>并且<strong>提供了一些队列特性的方法</strong>。</p>
+<ul>
+<li>抽象方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>修饰符和类型</th>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>add(E e)</td>
+<td>将元素插入队列，成功返回true，超过队列容量限制则抛出illegalStateException异常</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>offer(E e)</td>
+<td>将元素插入队列，成功返回true，超过队列容量限制返回false</td>
+</tr>
+<tr>
+<td>E</td>
+<td>peek()</td>
+<td>获取但不移除队列头部元素，队列为空返回null</td>
+</tr>
+<tr>
+<td>E</td>
+<td>poll()</td>
+<td>获取并移除队列头部元素，队列为空返回null</td>
+</tr>
+<tr>
+<td>E</td>
+<td>element()</td>
+<td>获取但不移除队列头部元素，队列为空抛出NoSuchElementException异常</td>
+</tr>
+<tr>
+<td>E</td>
+<td>remove()</td>
+<td>获取并移除队列头部元素，队列为空抛出NoSuchElementException异常</td>
+</tr>
+</tbody>
+</table>
+<p>参考自姚宛智的博客：<a href="https://harviealwayshere.github.io/2018/08/13/javahigh1-Collection" target="_blank" rel="noopener">https://harviealwayshere.github.io/2018/08/13/javahigh1-Collection</a></p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/wulinbaba" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 wulin<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
